@@ -9,34 +9,21 @@ package Model.dados;
  *
  * @author Diogo
  */
-public class Monster extends Carta {
-    private final int level, dmg, rewardXp;
-    private int hp;
+public class Monster extends CartaMonstro {
     
     public Monster(Jogo j){
         nome = "Monster";
-        this.level = j.getLevel();
-        dmg = j.getLevel() * 2;
-        hp = j.getArea() + Dado.lancaDado();
+        setLevel(j.getLevel());
+        setDmg(j.getLevel() * 2);
+        setHp(j.getArea() + Dado.lancaDado());
         if(j.getLevel() == 5)
-            rewardXp = 3;
+            setRewardXp(3);
         else
             if(j.getLevel() < 3 )
-                rewardXp = 1;
+                setRewardXp(1);
             else
-                rewardXp = 2;
+                setRewardXp(2);
         
-    }
-    
-    public int getLevel(){return level;}
-    public int getDmg(){return dmg;}
-    public int getRewardXp(){return rewardXp;}
-    public int getHp(){return hp;}
-    
-    public void setHp(int hp){ this.hp = hp;}
-    
-    public void Ataca(Jogo j){
-        j.getPersonagem().setHp((j.getPersonagem().getHp()-(dmg - j.getPersonagem().getArmor()))); // retira os pontos da armor ao damage do boss e retira os pontos hp consoanto o dmg resultante
     }
     
     public void recebeRecompensa(Jogo j){

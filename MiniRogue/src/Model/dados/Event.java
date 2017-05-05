@@ -29,9 +29,8 @@ public class Event extends Carta{
                 
             case 6: {
                 for (int i = 0; i < j.getCartas().size();i++) {
-                    if(j.getCartas().get(i).getNome().equals(this.getNome())){
+                    if( j.getCartas().get(i) instanceof Event)
                         j.getCartas().set(i, new Monster(j));
-                    }
                 }
                 break;
             }

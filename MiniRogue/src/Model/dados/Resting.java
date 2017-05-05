@@ -15,7 +15,7 @@ public class Resting extends Carta{
         nome = "Resting";
     }
     
-    public void Descansa(Jogo j){
+    public void descansa(Jogo j){
         j.getPersonagem().setXp(j.getPersonagem().getXp()+1);
         j.getPersonagem().setFood(j.getPersonagem().getFood()+1);
         j.getPersonagem().setHp(j.getPersonagem().getHp()+2);
