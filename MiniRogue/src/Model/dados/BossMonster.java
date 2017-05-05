@@ -9,46 +9,36 @@ package Model.dados;
  *
  * @author Diogo
  */
-public class BossMonster extends Carta{
-    private final int level, dmg, rewardGold, rewardXp;
-    private int hp;
+public class BossMonster extends CartaMonstro{
+    int rewardGold;
     
     public BossMonster(Jogo j){
         nome = "BossMonster";
-        this.level = j.getLevel();
-        hp = 5 + (j.getLevel() * 5);
+        setLevel(j.getLevel());
+        setHp(5 + (j.getLevel() * 5));
         if(j.getLevel() == 5)
-            dmg = 12;
+            setDmg(12);
         else{
-            dmg = j.getLevel() * j.getLevel() + 1;
+            setDmg(j.getLevel() * j.getLevel() + 1);
         }
         if(j.getLevel() < 3)
             rewardGold = 2;
         else
             rewardGold = 3;
-        rewardXp = j.getLevel() + 1;
+        setRewardXp(j.getLevel() + 1);
     }
     
-    public int getLevel(){return level;}
-    public int getHp(){return hp;}
-    public int getDmg(){return dmg;}
     public int getRewardGold(){return rewardGold;}
-    public int getRewardXp(){return rewardXp;}
     
-    public void setHp(int hp){this.hp = hp;}
-    
-    public void Ataca(Jogo j){
-        j.getPersonagem().setHp((j.getPersonagem().getHp()-(dmg - j.getPersonagem().getArmor()))); // retira os pontos da armor ao damage do boss e retira os pontos hp consoanto o dmg resultante
-    }
+    public void setRewardGold(int rewardGold){this.rewardGold = rewardGold;}
     
     public void recebeRecompensa(Jogo j){
         j.getPersonagem().setGold((j.getPersonagem().getGold()+getRewardGold()));
         j.getPersonagem().setGold((j.getPersonagem().getXp()+getRewardXp()));
         
         for (int i = 0; i < j.getCartas().size();i++) {
-            if(j.getCartas().get(i).getNome().equals(this.getNome())){
+            if( j.getCartas().get(i) instanceof BossMonster)
                 j.getCartas().set(i, new Treasure());
-            }
         }
     }
     

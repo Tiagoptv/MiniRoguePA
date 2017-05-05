@@ -18,7 +18,6 @@ import Model.dados.*;
 public class Menu {
     public static int ImprimePrincipal(){
         int op = 0;
-        boolean flag = false;
         do{
             
             System.out.print("+");
@@ -33,12 +32,18 @@ public class Menu {
             System.out.println("+\n");
             System.out.print("Opçao: ");
             Scanner sc = new Scanner(System.in);
-            if((flag = sc.hasNextInt()))
-                op = sc.nextInt();
+            
+            while(!sc.hasNextInt()) sc.next();
+            op = sc.nextInt();
 
-        }while((!flag) || op >= 4 || op <= 0);
+        }while( op >= 4 || op <= 0 );
         
         return op;
+    }
+    
+    public static int ImprimePedeArea(){
+        //FALTA IMPLENTAR
+        return 0;
     }
     
     /*public static int ImprimeCarrega() throws FileNotFoundException, IOException{
@@ -70,4 +75,8 @@ public class Menu {
         
         return op;
     }*/
+
+    public static void ImprimePedeDificuldade() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

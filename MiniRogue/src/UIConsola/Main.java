@@ -13,12 +13,16 @@ import Model.dados.*;
  */
 public class Main {
     public static void main(String args[]) {
-        int op;
+        
+        Jogo j = new Jogo();
+        Menu.ImprimePrincipal();
+        
+        /*int op;
         Merchant m = new Merchant();
         op = Menu.ImprimePrincipal();//Menu.ImprimeCarrega();
 
         if(op == 1){
             m.desenhaCarta();
-        }
+        }*/
     }
 }
